@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>To-Do List</title>
+  <script>
+    // Add Task function
+        function addTask() {
+        const inputBox = document.getElementById('input-box');
+        const taskList = document.getElementById('task-list');
+
+        if (inputBox.value.trim() !== '') {
+            // Create a new list item
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${inputBox.value}</span> <span class="delete-btn" onclick="deleteTask(this)">X</span>`;
+            taskList.appendChild(li);
+            inputBox.value = '';
+        }
+        }
+
+        // Delete Task 
+        function deleteTask(element) {
+        const taskList = document.getElementById('task-list');
+        taskList.removeChild(element.parentNode);
+        }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>To-Do List</h2>
+    <div class="todo-app">
+      <div class="row">
+        <input type="text" id="input-box" placeholder="Add new task">
+        <button onclick="addTask()">Add</button>
+      </div>
+      <ul id="task-list">
+        <!-- Tasks will be dynamically added here -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
